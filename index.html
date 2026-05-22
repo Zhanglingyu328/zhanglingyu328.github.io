@@ -4,22 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lingyu Zhang | Academic Homepage</title>
-  <meta name="description" content="Lingyu Zhang's academic homepage: computer vision, multimodal reasoning, spatial reasoning, and embodied AI." />
+  <meta name="description" content="Lingyu Zhang's academic homepage: computer vision, multimodal reasoning, cross-view spatial reasoning, and embodied AI." />
   <style>
     :root {
-      --bg: #f6f4ef;
-      --paper: #fffdf8;
-      --paper-2: #ffffff;
-      --text: #22252d;
-      --muted: #687080;
-      --line: rgba(36, 39, 48, 0.12);
-      --accent: #7257ff;
-      --accent-2: #ff8f5a;
-      --accent-3: #2ea6a0;
-      --ink: #151821;
-      --shadow: 0 24px 70px rgba(29, 32, 40, 0.10);
-      --radius-xl: 34px;
-      --radius-lg: 24px;
+      --bg: #f5f9ff;
+      --card: rgba(255, 255, 255, 0.86);
+      --card-solid: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --soft: #eaf3ff;
+      --line: #dbe7f5;
+      --blue: #2563eb;
+      --blue-2: #0ea5e9;
+      --blue-3: #1d4ed8;
+      --navy: #0f172a;
+      --cyan: #67e8f9;
+      --shadow: 0 22px 60px rgba(37, 99, 235, 0.10);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
       --max: 1120px;
     }
 
@@ -30,29 +32,26 @@
       margin: 0;
       color: var(--text);
       background:
-        radial-gradient(circle at 14% 8%, rgba(114, 87, 255, 0.16), transparent 28%),
-        radial-gradient(circle at 88% 16%, rgba(255, 143, 90, 0.18), transparent 26%),
-        linear-gradient(180deg, #fbfaf7 0%, var(--bg) 46%, #f3efe7 100%);
+        radial-gradient(circle at 9% 7%, rgba(14, 165, 233, 0.18), transparent 28%),
+        radial-gradient(circle at 88% 13%, rgba(37, 99, 235, 0.15), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f5f9ff 46%, #eef6ff 100%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
       font-size: 16px;
       line-height: 1.7;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .page-shell {
+    .shell {
       width: min(var(--max), calc(100% - 36px));
       margin: 0 auto;
     }
 
     .nav-wrap {
       position: sticky;
-      top: 18px;
+      top: 16px;
       z-index: 50;
-      padding-top: 18px;
+      padding-top: 16px;
     }
 
     .nav {
@@ -61,175 +60,195 @@
       justify-content: space-between;
       gap: 18px;
       padding: 12px 14px 12px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(219, 231, 245, 0.86);
       border-radius: 999px;
-      background: rgba(255, 253, 248, 0.76);
+      background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(18px);
-      box-shadow: 0 12px 34px rgba(25, 28, 36, 0.08);
+      box-shadow: 0 12px 34px rgba(15, 23, 42, 0.07);
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--ink);
+      color: var(--navy);
+      font-weight: 850;
+      letter-spacing: -0.03em;
       white-space: nowrap;
     }
 
     .brand-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 8px 20px rgba(114, 87, 255, 0.28);
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-2));
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.28);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
       justify-content: flex-end;
+      flex-wrap: wrap;
       gap: 4px;
     }
 
     .nav-links a {
       padding: 8px 12px;
       border-radius: 999px;
-      color: #5e6573;
+      color: #64748b;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 750;
       transition: 0.18s ease;
     }
 
     .nav-links a:hover {
-      color: var(--ink);
-      background: rgba(114, 87, 255, 0.10);
+      color: var(--blue-3);
+      background: #eaf3ff;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) 350px;
+      grid-template-columns: minmax(0, 1.2fr) 360px;
       gap: 28px;
-      padding: 64px 0 36px;
+      padding: 62px 0 30px;
       align-items: stretch;
     }
 
-    .hero-card, .profile-card, .section-card {
-      border: 1px solid rgba(255, 255, 255, 0.70);
-      background: rgba(255, 253, 248, 0.82);
-      backdrop-filter: blur(20px);
-      border-radius: var(--radius-xl);
+    .hero-main,
+    .profile-card,
+    .section-card,
+    .stat {
+      border: 1px solid rgba(219, 231, 245, 0.92);
+      background: var(--card);
+      backdrop-filter: blur(18px);
       box-shadow: var(--shadow);
     }
 
-    .hero-card {
+    .hero-main {
       position: relative;
       overflow: hidden;
-      padding: 44px;
       min-height: 430px;
+      padding: 46px;
+      border-radius: var(--radius-xl);
     }
 
-    .hero-card::after {
+    .hero-main::before {
       content: "";
       position: absolute;
-      right: -90px;
-      bottom: -120px;
-      width: 320px;
-      height: 320px;
+      right: -100px;
+      top: -100px;
+      width: 280px;
+      height: 280px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(46, 166, 160, 0.22), transparent 68%);
-      pointer-events: none;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.20), transparent 68%);
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      left: 44px;
+      bottom: 0;
+      width: 72%;
+      height: 6px;
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(90deg, var(--blue), var(--blue-2), var(--cyan));
     }
 
     .kicker {
+      position: relative;
+      z-index: 1;
       display: inline-flex;
       align-items: center;
       gap: 9px;
+      margin: 0 0 24px;
       padding: 8px 13px;
       border-radius: 999px;
-      background: rgba(114, 87, 255, 0.10);
-      color: #5744c9;
-      font-weight: 800;
+      background: #eaf3ff;
+      color: var(--blue-3);
       font-size: 13px;
-      letter-spacing: 0.04em;
+      font-weight: 850;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin: 0 0 24px;
     }
 
     .kicker-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(114, 87, 255, 0.12);
+      background: var(--blue);
+      box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.12);
     }
 
     h1 {
+      position: relative;
+      z-index: 1;
       margin: 0;
-      color: var(--ink);
+      color: var(--navy);
       font-size: clamp(44px, 7.2vw, 78px);
-      line-height: 0.95;
+      line-height: 0.96;
       letter-spacing: -0.075em;
     }
 
     .cn-name {
       display: inline-block;
-      margin-top: 12px;
+      margin-top: 10px;
       color: transparent;
-      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      background: linear-gradient(120deg, var(--blue), var(--blue-2));
       -webkit-background-clip: text;
       background-clip: text;
     }
 
     .hero-subtitle {
-      max-width: 740px;
+      position: relative;
+      z-index: 1;
+      max-width: 750px;
       margin: 26px 0 0;
-      color: #4c5362;
+      color: #475569;
       font-size: 19px;
-      line-height: 1.75;
+      line-height: 1.78;
     }
 
-    .hero-subtitle strong {
-      color: var(--ink);
-    }
+    .hero-subtitle strong { color: var(--navy); }
 
     .quick-links {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 28px;
+      margin-top: 30px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 11px 15px;
+      padding: 11px 16px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.72);
-      color: var(--ink);
-      font-weight: 800;
+      background: rgba(255, 255, 255, 0.80);
+      color: var(--navy);
+      font-weight: 850;
       font-size: 14px;
       transition: 0.18s ease;
     }
 
     .btn.primary {
-      color: white;
+      color: #ffffff;
       border-color: transparent;
-      background: linear-gradient(135deg, var(--accent), #8b6cff);
-      box-shadow: 0 14px 28px rgba(114, 87, 255, 0.24);
+      background: linear-gradient(135deg, var(--blue), var(--blue-2));
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.24);
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(25, 28, 36, 0.10);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.10);
     }
 
     .profile-card {
       padding: 22px;
+      border-radius: var(--radius-xl);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -240,25 +259,32 @@
       position: relative;
       overflow: hidden;
       border-radius: 26px;
-      min-height: 265px;
-      background: linear-gradient(135deg, rgba(114, 87, 255, 0.18), rgba(255, 143, 90, 0.18));
+      min-height: 272px;
+      background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+    }
+
+    .photo-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 26px;
+      pointer-events: none;
     }
 
     .photo-frame img {
       display: block;
       width: 100%;
       height: 100%;
-      min-height: 265px;
+      min-height: 272px;
       object-fit: cover;
     }
 
-    .profile-meta {
-      padding: 0 4px 4px;
-    }
+    .profile-meta { padding: 0 4px 4px; }
 
     .profile-meta h2 {
       margin: 0 0 4px;
-      color: var(--ink);
+      color: var(--navy);
       font-size: 26px;
       letter-spacing: -0.04em;
     }
@@ -280,17 +306,18 @@
       padding: 10px 11px;
       border: 1px solid var(--line);
       border-radius: 16px;
-      background: rgba(255,255,255,0.68);
-      color: #505866;
-      font-weight: 750;
+      background: rgba(255,255,255,0.74);
+      color: #475569;
+      font-weight: 800;
       font-size: 14px;
       text-align: center;
+      transition: 0.18s ease;
     }
 
     .mini-link:hover {
-      color: var(--accent);
-      border-color: rgba(114, 87, 255, 0.30);
-      background: rgba(114, 87, 255, 0.07);
+      color: var(--blue-3);
+      border-color: rgba(37, 99, 235, 0.28);
+      background: #eaf3ff;
     }
 
     .stats-strip {
@@ -302,18 +329,15 @@
 
     .stat {
       padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.70);
       border-radius: 24px;
-      background: rgba(255, 253, 248, 0.78);
-      box-shadow: 0 12px 30px rgba(25, 28, 36, 0.055);
     }
 
     .stat-number {
       display: block;
-      color: var(--ink);
+      color: var(--navy);
       font-size: 28px;
       line-height: 1.05;
-      font-weight: 900;
+      font-weight: 950;
       letter-spacing: -0.04em;
     }
 
@@ -322,7 +346,7 @@
       margin-top: 6px;
       color: var(--muted);
       font-size: 13px;
-      font-weight: 750;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -330,6 +354,7 @@
     .section-card {
       padding: 30px;
       margin: 28px 0;
+      border-radius: var(--radius-xl);
     }
 
     .section-head {
@@ -342,26 +367,26 @@
 
     .section-title {
       margin: 0;
-      color: var(--ink);
+      color: var(--navy);
       font-size: 30px;
       line-height: 1.1;
       letter-spacing: -0.05em;
     }
 
     .section-label {
-      color: var(--accent);
+      margin-bottom: 6px;
+      color: var(--blue);
       font-size: 13px;
-      font-weight: 900;
+      font-weight: 950;
       letter-spacing: 0.09em;
       text-transform: uppercase;
-      margin-bottom: 6px;
     }
 
     .section-desc {
       margin: 0;
       max-width: 650px;
       color: var(--muted);
-      font-weight: 550;
+      font-weight: 560;
     }
 
     .research-grid {
@@ -372,39 +397,41 @@
 
     .research-item {
       position: relative;
-      padding: 20px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.70);
       overflow: hidden;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.76);
     }
 
     .research-item::before {
       content: "";
       position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 48px;
-      height: 48px;
-      border-radius: 18px;
-      opacity: 0.16;
-      background: var(--accent);
+      right: -22px;
+      top: -22px;
+      width: 90px;
+      height: 90px;
+      border-radius: 30px;
+      background: rgba(37, 99, 235, 0.10);
+      transform: rotate(12deg);
     }
 
-    .research-item:nth-child(2)::before { background: var(--accent-2); }
-    .research-item:nth-child(3)::before { background: var(--accent-3); }
-    .research-item:nth-child(4)::before { background: #e0b11f; }
+    .research-item:nth-child(2)::before { background: rgba(14, 165, 233, 0.13); }
+    .research-item:nth-child(3)::before { background: rgba(8, 145, 178, 0.13); }
+    .research-item:nth-child(4)::before { background: rgba(59, 130, 246, 0.13); }
 
     .research-item h3 {
+      position: relative;
       margin: 0 0 8px;
-      color: var(--ink);
+      color: var(--navy);
       font-size: 18px;
       letter-spacing: -0.02em;
     }
 
     .research-item p {
+      position: relative;
       margin: 0;
-      color: #5a6270;
+      color: #566276;
       font-size: 15px;
     }
 
@@ -420,17 +447,17 @@
       padding: 15px;
       border: 1px solid var(--line);
       border-radius: 22px;
-      background: rgba(255,255,255,0.68);
+      background: rgba(255,255,255,0.76);
     }
 
     .news-date {
-      color: var(--accent);
-      font-weight: 900;
+      color: var(--blue-3);
+      font-weight: 950;
       font-style: italic;
     }
 
     .news-text {
-      color: #48505e;
+      color: #475569;
       font-weight: 570;
     }
 
@@ -438,7 +465,7 @@
       padding: 22px;
       border: 1px solid var(--line);
       border-radius: 26px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.80), rgba(255,255,255,0.58));
+      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(245,249,255,0.78));
     }
 
     .pub-top {
@@ -454,20 +481,20 @@
       align-items: center;
       padding: 5px 9px;
       border-radius: 999px;
-      color: #fff;
-      background: var(--accent);
+      color: #ffffff;
+      background: var(--blue);
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 950;
       letter-spacing: 0.03em;
       text-transform: uppercase;
     }
 
-    .tag.orange { background: var(--accent-2); }
-    .tag.green { background: var(--accent-3); }
+    .tag.sky { background: var(--blue-2); }
+    .tag.navy { background: #334155; }
 
     .pub-title {
       margin: 0 0 8px;
-      color: var(--ink);
+      color: var(--navy);
       font-size: 21px;
       line-height: 1.35;
       letter-spacing: -0.03em;
@@ -475,12 +502,30 @@
 
     .authors, .venue, .pub-summary {
       margin: 0;
-      color: #58616f;
+      color: #566276;
     }
 
-    .authors strong { color: var(--ink); }
-    .venue { margin-top: 4px; font-weight: 760; }
+    .authors strong { color: var(--navy); }
+    .venue { margin-top: 4px; font-weight: 780; }
     .pub-summary { margin-top: 14px; }
+
+    .pub-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .small-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #eaf3ff;
+      color: var(--blue-3);
+      font-size: 13px;
+      font-weight: 850;
+    }
 
     .project-grid {
       display: grid;
@@ -489,30 +534,30 @@
     }
 
     .project-card {
-      padding: 22px;
-      border-radius: 26px;
-      background: #171a23;
-      color: #f8fafc;
-      min-height: 210px;
       position: relative;
       overflow: hidden;
+      min-height: 210px;
+      padding: 22px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: #f8fafc;
     }
 
     .project-card.secondary {
-      background: rgba(255,255,255,0.68);
       color: var(--text);
+      background: rgba(255,255,255,0.76);
       border: 1px solid var(--line);
     }
 
     .project-card::after {
       content: "";
       position: absolute;
-      right: -70px;
-      bottom: -80px;
+      right: -68px;
+      bottom: -76px;
       width: 190px;
       height: 190px;
       border-radius: 50%;
-      background: rgba(114, 87, 255, 0.35);
+      background: rgba(125, 211, 252, 0.30);
     }
 
     .project-card h3 {
@@ -528,7 +573,22 @@
       z-index: 1;
       margin: 0;
       color: inherit;
-      opacity: 0.82;
+      opacity: 0.85;
+    }
+
+    .project-card .small-btn {
+      position: relative;
+      z-index: 1;
+      margin-top: 18px;
+      color: #ffffff;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.20);
+    }
+
+    .project-card.secondary .small-btn {
+      color: var(--blue-3);
+      background: #eaf3ff;
+      border: none;
     }
 
     .two-col {
@@ -538,24 +598,22 @@
     }
 
     .simple-list {
+      display: grid;
+      gap: 12px;
       margin: 0;
       padding: 0;
       list-style: none;
-      display: grid;
-      gap: 12px;
     }
 
     .simple-list li {
       padding: 15px 16px;
       border: 1px solid var(--line);
       border-radius: 20px;
-      background: rgba(255,255,255,0.68);
-      color: #515968;
+      background: rgba(255,255,255,0.76);
+      color: #566276;
     }
 
-    .simple-list strong {
-      color: var(--ink);
-    }
+    .simple-list strong { color: var(--navy); }
 
     .footer {
       padding: 28px 0 56px;
@@ -572,10 +630,10 @@
     }
 
     @media (max-width: 720px) {
-      .page-shell { width: min(100% - 24px, var(--max)); }
+      .shell { width: min(100% - 24px, var(--max)); }
       .nav { border-radius: 26px; align-items: flex-start; flex-direction: column; }
       .nav-links { justify-content: flex-start; }
-      .hero-card { padding: 30px 24px; min-height: auto; }
+      .hero-main { padding: 30px 24px; min-height: auto; }
       .research-grid { grid-template-columns: 1fr; }
       .section-card { padding: 22px; border-radius: 26px; }
       .section-head { display: block; }
@@ -585,7 +643,7 @@
   </style>
 </head>
 <body>
-  <div class="page-shell nav-wrap">
+  <div class="shell nav-wrap">
     <nav class="nav">
       <a class="brand" href="#top"><span class="brand-mark"></span> Lingyu Zhang</a>
       <div class="nav-links">
@@ -600,9 +658,9 @@
     </nav>
   </div>
 
-  <main id="top" class="page-shell">
+  <main id="top" class="shell">
     <section class="hero">
-      <div class="hero-card" id="about">
+      <div class="hero-main" id="about">
         <p class="kicker"><span class="kicker-dot"></span> Undergraduate Researcher · XJTU</p>
         <h1>Lingyu<br />Zhang <span class="cn-name">张玲瑜</span></h1>
         <p class="hero-subtitle">
@@ -611,26 +669,25 @@
           and <strong>visual imagination</strong>, with broader interests in computer vision, physical reasoning, and embodied AI.
         </p>
         <div class="quick-links">
-          <a class="btn primary" href="mailto:YOUR_EMAIL@example.com">✉ Email</a>
-          <a class="btn" href="assets/CV_Lingyu_Zhang.pdf">▣ CV</a>
-          <a class="btn" href="https://github.com/YOUR_GITHUB_USERNAME">⌘ GitHub</a>
+          <a class="btn primary" href="mailto:zlyzly@stu.xjtu.edu.cn">✉ Email</a>
+          <a class="btn" href="https://github.com/Zhanglingyu328">⌘ GitHub</a>
+          <a class="btn" href="https://github.com/Zhanglingyu328/CVSBench">↗ CVSBench</a>
           <a class="btn" href="#publications">→ Publications</a>
         </div>
       </div>
 
       <aside class="profile-card" id="contact">
         <div class="photo-frame">
-          <!-- Put your photo at assets/profile.jpg. Suggested size: square, 600x600 or larger. -->
           <img src="assets/profile.jpg" alt="Lingyu Zhang" />
         </div>
         <div class="profile-meta">
           <h2>Lingyu Zhang</h2>
           <p>Xi'an Jiaotong University · Computer Science</p>
           <div class="contact-grid">
-            <a class="mini-link" href="mailto:YOUR_EMAIL@example.com">Email</a>
-            <a class="mini-link" href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
-            <a class="mini-link" href="https://scholar.google.com/">Scholar</a>
-            <a class="mini-link" href="assets/CV_Lingyu_Zhang.pdf">CV</a>
+            <a class="mini-link" href="mailto:zlyzly@stu.xjtu.edu.cn">Email</a>
+            <a class="mini-link" href="https://github.com/Zhanglingyu328">GitHub</a>
+            <a class="mini-link" href="https://github.com/Zhanglingyu328/CVSBench">CVSBench</a>
+            <a class="mini-link" href="#publications">Paper</a>
           </div>
         </div>
       </aside>
@@ -656,7 +713,7 @@
       <div class="research-grid">
         <article class="research-item">
           <h3>Multimodal Spatial Reasoning</h3>
-          <p>Diagnosing how MLLMs reason about relative position, orientation, viewpoint changes, and scene layout.</p>
+          <p>Diagnosing how multimodal models reason about relative position, orientation, viewpoint changes, and scene layout.</p>
         </article>
         <article class="research-item">
           <h3>Cross-view Visual Understanding</h3>
@@ -697,8 +754,8 @@
       </div>
       <article class="publication">
         <div class="pub-top">
-          <span class="tag orange">Under Review</span>
-          <span class="tag green">Benchmark</span>
+          <span class="tag navy">Under Review</span>
+          <span class="tag sky">Benchmark</span>
           <span class="tag">Spatial Reasoning</span>
         </div>
         <h3 class="pub-title">CVSBench: A Comprehensive Benchmark for Cross-view Spatial Reasoning and Dreaming</h3>
@@ -707,6 +764,9 @@
         <p class="pub-summary">
           CVSBench evaluates cross-view spatial reasoning between remote sensing and street-view imagery, and studies whether generated visual imagination can assist cross-view question answering.
         </p>
+        <div class="pub-actions">
+          <a class="small-btn" href="https://github.com/Zhanglingyu328/CVSBench">GitHub Repository</a>
+        </div>
       </article>
     </section>
 
@@ -723,12 +783,14 @@
           <p>
             A benchmark for cross-view spatial reasoning and visual imagination. It studies whether multimodal models can infer spatial relations across remote sensing and street-view images, and whether generated visual information can improve reasoning.
           </p>
+          <a class="small-btn" href="https://github.com/Zhanglingyu328/CVSBench">View Project</a>
         </article>
         <article class="project-card secondary">
           <h3>Next Step</h3>
           <p>
             I hope to extend cross-view reasoning toward general visual reasoning, embodied AI evaluation, and physical-world understanding in human-object-scene settings.
           </p>
+          <a class="small-btn" href="#research">Research Interests</a>
         </article>
       </div>
     </section>
@@ -755,7 +817,7 @@
     </section>
   </main>
 
-  <footer class="footer page-shell">
+  <footer class="footer shell">
     © 2026 Lingyu Zhang. Last updated: May 2026.
   </footer>
 </body>
