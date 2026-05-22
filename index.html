@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lingyu Zhang | Homepage</title>
+  <meta name="description" content="Lingyu Zhang's academic homepage: computer vision, multimodal reasoning, spatial reasoning, and embodied AI." />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #3f4654;
+      --heading: #2f3542;
+      --muted: #6b7280;
+      --link: #244a92;
+      --link-hover: #17346d;
+      --line: #e5e7eb;
+      --soft: #f7f8fa;
+      --badge-blue: #4078c0;
+      --badge-orange: #d99a30;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--link);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar-inner {
+      max-width: var(--max-width);
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      padding: 0 28px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .topbar a {
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .topbar a:first-child {
+      color: var(--heading);
+      font-weight: 700;
+    }
+
+    .topbar a:hover {
+      color: var(--link);
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 42px 28px 70px;
+      display: grid;
+      grid-template-columns: 235px minmax(0, 1fr);
+      gap: 58px;
+    }
+
+    .sidebar {
+      padding-top: 10px;
+    }
+
+    .avatar-card {
+      width: 185px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fff;
+      margin-bottom: 18px;
+    }
+
+    .avatar {
+      display: block;
+      width: 100%;
+      height: 185px;
+      object-fit: cover;
+      background: var(--soft);
+    }
+
+    .name {
+      font-size: 25px;
+      line-height: 1.2;
+      font-weight: 800;
+      color: var(--heading);
+      margin: 0 0 6px;
+    }
+
+    .affiliation {
+      margin: 0 0 24px;
+      color: #4b5563;
+      font-size: 16px;
+    }
+
+    .bio-short {
+      font-size: 16px;
+      color: #4b5563;
+      margin: 0 0 20px;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: #4b5563;
+      font-size: 16px;
+    }
+
+    .contact-list li {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .contact-list a {
+      color: #4b5563;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-list a:hover {
+      color: var(--link);
+      text-decoration: underline;
+    }
+
+    .icon {
+      width: 18px;
+      color: #111827;
+      text-align: center;
+      flex: 0 0 18px;
+    }
+
+    .content {
+      min-width: 0;
+    }
+
+    .intro {
+      margin-top: 8px;
+      margin-bottom: 26px;
+    }
+
+    .intro p {
+      margin: 0 0 14px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--heading);
+      font-size: 26px;
+      line-height: 1.2;
+      margin: 28px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h3 {
+      color: var(--heading);
+      font-size: 19px;
+      margin: 18px 0 8px;
+    }
+
+    .section-icon {
+      font-size: 23px;
+      line-height: 1;
+    }
+
+    .news-list,
+    .publication-list,
+    .plain-list {
+      margin: 0;
+      padding-left: 24px;
+    }
+
+    .news-list li,
+    .publication-list li,
+    .plain-list li {
+      margin: 9px 0;
+    }
+
+    .date {
+      font-style: italic;
+      font-weight: 600;
+      color: #4b5563;
+      margin-right: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 2px 8px;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-right: 6px;
+      text-decoration: none;
+    }
+
+    .badge.orange {
+      background: var(--badge-orange);
+    }
+
+    .badge.blue {
+      background: var(--badge-blue);
+    }
+
+    .paper-title {
+      font-weight: 600;
+    }
+
+    .authors {
+      display: block;
+      color: #4b5563;
+      margin-top: 3px;
+    }
+
+    .note {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .project-box {
+      border-left: 4px solid #d1d5db;
+      padding: 4px 0 4px 16px;
+      margin: 14px 0 18px;
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 22px 28px 42px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 820px) {
+      .topbar {
+        height: auto;
+      }
+
+      .topbar-inner {
+        padding: 16px 20px;
+        gap: 20px;
+      }
+
+      .page {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        padding: 30px 22px 56px;
+      }
+
+      .sidebar {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+        align-items: start;
+      }
+
+      .avatar-card {
+        width: 150px;
+      }
+
+      .avatar {
+        height: 150px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      body {
+        font-size: 16px;
+      }
+
+      .sidebar {
+        display: block;
+      }
+
+      h2 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a href="#home">Homepage</a>
+      <a href="#about">About Me</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#honors">Honors and Awards</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Internships</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main id="home" class="page">
+    <aside class="sidebar">
+      <div class="avatar-card">
+        <!-- Put your photo at assets/profile.jpg. Suggested size: square, 500x500 or larger. -->
+        <img class="avatar" src="assets/profile.jpg" alt="Lingyu Zhang" />
+      </div>
+
+      <div>
+        <h1 class="name">Lingyu Zhang</h1>
+        <p class="affiliation">Xi'an Jiaotong University</p>
+
+        <p class="bio-short">
+          Lingyu Zhang is an undergraduate student at Xi'an Jiaotong University, focusing on Computer Vision,
+          Multimodal Reasoning, Spatial Reasoning, and Embodied AI.
+        </p>
+
+        <ul class="contact-list" id="contact">
+          <li><span class="icon">⌖</span><span>Xi'an, China</span></li>
+          <li><span class="icon">✉</span><a href="mailto:YOUR_EMAIL@example.com">Email</a></li>
+          <li><span class="icon">⌘</span><a href="https://github.com/YOUR_GITHUB_USERNAME">Github</a></li>
+          <li><span class="icon">◎</span><a href="https://scholar.google.com/">Google Scholar</a></li>
+          <li><span class="icon">▣</span><a href="assets/CV_Lingyu_Zhang.pdf">CV</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="intro" id="about">
+        <p>
+          Greetings! I am currently an undergraduate student majoring in <strong>Computer Science and Technology</strong>
+          at <strong>Xi'an Jiaotong University</strong>. I am conducting undergraduate research in Prof. Xiangyong Cao's group.
+        </p>
+        <p>
+          My current research focuses on <strong>multimodal spatial reasoning</strong>, <strong>cross-view visual understanding</strong>,
+          and <strong>visual imagination</strong> for remote sensing and street-view imagery. I am especially interested in
+          evaluating whether multimodal models can understand spatial relations across different viewpoints.
+        </p>
+        <p>
+          My broader research interests include <strong>Computer Vision</strong>, <strong>Multimodal Large Language Models</strong>,
+          <strong>Visual Reasoning</strong>, <strong>Physical Reasoning</strong>, and <strong>Embodied AI</strong>.
+        </p>
+      </div>
+
+      <h2 id="news"><span class="section-icon">🔥</span> News</h2>
+      <ul class="news-list">
+        <li><span class="date">2026.03:</span> 🎉 <strong>CVSBench</strong> was submitted to <strong>ECCV 2026</strong>.</li>
+        <li><span class="date">2025.xx:</span> 🔥 Started research on multimodal spatial reasoning and visual imagination.</li>
+        <li><span class="date">2025.xx:</span> 🏆 Awarded the <strong>National Scholarship</strong>.</li>
+        <li><span class="date">2024.xx:</span> 🏆 Awarded the <strong>National Scholarship</strong>.</li>
+      </ul>
+
+      <h2 id="publications"><span class="section-icon">📝</span> Publications</h2>
+      <h3>Multimodal Spatial Reasoning and Visual Understanding</h3>
+      <ul class="publication-list">
+        <li>
+          <span class="badge orange">Under Review</span>
+          <span class="paper-title">CVSBench: A Comprehensive Benchmark for Cross-view Spatial Reasoning and Dreaming</span>
+          <span class="authors"><strong>Lingyu Zhang*</strong>, Co-author*, et al.</span>
+          <span class="authors">Submitted to <strong>ECCV 2026</strong>.</span>
+          <p class="note">
+            CVSBench evaluates cross-view spatial reasoning between remote sensing and street-view imagery, and studies whether generated visual imagination can assist cross-view question answering.
+          </p>
+        </li>
+      </ul>
+
+      <h2 id="projects"><span class="section-icon">🚀</span> Projects</h2>
+      <div class="project-box">
+        <h3>CVSBench</h3>
+        <p>
+          A benchmark for evaluating cross-view spatial reasoning and visual imagination. The project studies whether
+          multimodal models can infer spatial relations across remote sensing and street-view images, and whether generated
+          visual information can improve cross-view reasoning.
+        </p>
+      </div>
+      <div class="project-box">
+        <h3>Future Research Project</h3>
+        <p>
+          Add your future project here, such as a reproduction project, course project, open-source implementation, or demo related to CV, MLLM, visual reasoning, or embodied AI.
+        </p>
+      </div>
+
+      <h2 id="honors"><span class="section-icon">🏆</span> Honors and Awards</h2>
+      <ul class="plain-list">
+        <li><strong>National Scholarship</strong>, 2025.</li>
+        <li><strong>National Scholarship</strong>, 2024.</li>
+        <li>GPA: <strong>4.05 / 4.30</strong>.</li>
+        <li>Academic ranking: <strong>3 / 194</strong> and <strong>4 / 187</strong> in previous academic years.</li>
+      </ul>
+
+      <h2 id="education"><span class="section-icon">🎓</span> Education</h2>
+      <ul class="plain-list">
+        <li>
+          <strong>Xi'an Jiaotong University</strong>, Xi'an, China<br />
+          B.E. in Computer Science and Technology, 2023 - Present.
+        </li>
+      </ul>
+
+      <h2 id="experience"><span class="section-icon">💼</span> Internships</h2>
+      <ul class="plain-list">
+        <li>
+          <strong>Undergraduate Research Assistant</strong>, Prof. Xiangyong Cao's Group<br />
+          Research on multimodal spatial reasoning, cross-view visual understanding, and visual imagination.
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Lingyu Zhang. Last updated: May 2026.
+  </footer>
+</body>
+</html>
